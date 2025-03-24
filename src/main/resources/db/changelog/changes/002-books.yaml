@@ -1,0 +1,69 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: "Alfredo Miranda"
+      changes:
+        - createTable:
+            tableName: "books"
+            remarks: "Table to store books information, it serves as catalog"
+            columns:
+              - column:
+                  name: book_id
+                  type: bigserial
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_book_id
+              - column:
+                  name: title
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: isbn
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: subject
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: publisher
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: language
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: number_of_pages
+                  type: int4
+                  constraints:
+                    nullable: false
+              - column:
+                  name: author_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    referencedTableName: authors
+                    referencedColumnNames: author_id
+                    foreignKeyName: fk_author_id
+              - column:
+                  name: created_at
+                  type: timestamptz
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: timestamptz
+                  constraints:
+                    nullable: false
+              - column:
+                  name: version
+                  type: int4
+                  constraints:
+                    nullable: false

@@ -1,0 +1,10 @@
+services:
+
+  library:
+    image: postgres:16.2-alpine3.19
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=library
+    ports:
+      - "14000:5432"
