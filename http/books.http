@@ -1,0 +1,19 @@
+### add new book
+POST http://localhost:14100/books
+Content-Type: application/json
+
+{
+  "title": "test",
+  "isbn": "test",
+  "subject": "test",
+  "publisher": "test",
+  "language": "test",
+  "numberOfPages": 100,
+  "authorId": 1
+}
+
+### get book by isbn
+GET http://localhost:14100/books?isbn=test
+
+### get total books
+GET http://localhost:14100/books/count

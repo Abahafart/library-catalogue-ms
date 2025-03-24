@@ -27,14 +27,30 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.liquibase:liquibase-core")
     compileOnly("org.projectlombok:lombok")
+    implementation("org.mapstruct:mapstruct:1.6.3")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     runtimeOnly("org.postgresql:postgresql")
     annotationProcessor("org.projectlombok:lombok")
+    annotationProcessor("org.mapstruct:mapstruct-processor:1.6.3")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+tasks.bootBuildImage {
+    builder.set("docker.io/paketobuildpacks/builder-jammy-base")
+    imageName = "${project.name}"
+    environment = mapOf("BP_JVM_VERSION" to "21")
+    docker {
+        publishRegistry {
+            username = project.findProperty("registryUsername").toString()
+            password = project.findProperty("registryToken").toString()
+            url = project.findProperty("registryUrl").toString()
+        }
+    }
 }
