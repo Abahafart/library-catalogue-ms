@@ -29,6 +29,9 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.liquibase:liquibase-core")
     implementation("com.github.javafaker:javafaker:0.12")
+    implementation("com.google.cloud:spring-cloud-gcp-starter-pubsub")
+    implementation("com.google.cloud:spring-cloud-gcp-pubsub-stream-binder")
+    testImplementation("org.springframework.cloud:spring-cloud-stream-test-binder")
     compileOnly("org.projectlombok:lombok")
     implementation("org.mapstruct:mapstruct:1.6.3")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
@@ -37,6 +40,13 @@ dependencies {
     annotationProcessor("org.mapstruct:mapstruct-processor:1.6.3")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+}
+
+dependencyManagement {
+    imports {
+        mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudVersion")}")
+        mavenBom("com.google.cloud:spring-cloud-gcp-dependencies:${property("gcpSpringCloudVersion")}")
+    }
 }
 
 tasks.withType<Test> {
