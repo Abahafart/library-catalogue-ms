@@ -28,6 +28,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.liquibase:liquibase-core")
+    implementation("com.github.javafaker:javafaker:0.12")
     compileOnly("org.projectlombok:lombok")
     implementation("org.mapstruct:mapstruct:1.6.3")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
