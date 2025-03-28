@@ -1,5 +1,6 @@
 package com.arch.library.domain;
 
+import java.io.Serializable;
 import java.time.Instant;
 
 import lombok.Getter;
@@ -7,7 +8,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class BookDO {
+public class BookDO implements Serializable {
 
   private Long bookId;
   private String title;

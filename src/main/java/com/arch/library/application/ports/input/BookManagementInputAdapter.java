@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.arch.library.application.ports.output.AuthorPersistenceManagement;
 import com.arch.library.application.ports.output.BookPersistenceManagement;
+import com.arch.library.application.ports.output.BookStreamManagement;
 import com.arch.library.application.usecases.BookManagement;
 import com.arch.library.domain.AuthorDO;
 import com.arch.library.domain.BookDO;
@@ -21,6 +22,7 @@ public class BookManagementInputAdapter implements BookManagement {
 
   private final BookPersistenceManagement persistenceManagement;
   private final AuthorPersistenceManagement authorPersistenceManagement;
+  private final BookStreamManagement streamManagement;
 
   @Override
   public BookDO createBook(BookDO book) {
@@ -28,6 +30,7 @@ public class BookManagementInputAdapter implements BookManagement {
     book.setAuthor(found);
     BookDO saved = persistenceManagement.save(book);
     saved.setAuthor(found);
+    streamManagement.notificationNewBook(saved);
     return saved;
   }
 

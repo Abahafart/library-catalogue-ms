@@ -16,17 +16,19 @@ public class BookRequest implements Serializable {
   private String language;
   private int numberOfPages;
   private long authorId;
+  private int items;
 
   @Override
   public String toString() {
-    return "BookRequest {" +
+    return "BookRequest{" +
         "title='" + title + '\'' +
-        ", ISBN='" + isbn + '\'' +
+        ", isbn='" + isbn + '\'' +
         ", subject='" + subject + '\'' +
         ", publisher='" + publisher + '\'' +
         ", language='" + language + '\'' +
         ", numberOfPages=" + numberOfPages +
         ", authorId=" + authorId +
+        ", items=" + items +
         '}';
   }
 }
