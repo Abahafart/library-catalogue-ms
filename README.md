@@ -28,3 +28,10 @@ These additional references should also help you:
 
 * [Gradle Build Scans – insights for your project's build](https://scans.gradle.com#gradle)
 
+### Configure connection to Postgresql with GCP
+* Create an instance with
+```gcloud sql instances create dev-instance --database-version=POSTGRES_16 --zone=us-central1-a --root-password=password123 --tier=db-perf-optimized-N-2```
+* Create database
+```gcloud sql databases create library --instance prod-instance```
+* Get connection name 
+```gcloud sql instances describe prod-instance | grep connectionName```
