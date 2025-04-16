@@ -19,6 +19,20 @@ configurations {
     }
 }
 
+tasks.jar {
+    manifest {
+        attributes["Main-Class"] = "com.arch.library.LibraryCatalogueMsApplication"
+    }
+}
+
+tasks.bootJar {
+    mainClass.set("com.arch.library.LibraryCatalogueMsApplication")
+}
+
+springBoot() {
+    mainClass.set("com.arch.library.LibraryCatalogueMsApplication")
+}
+
 repositories {
     mavenCentral()
 }
@@ -44,6 +58,7 @@ dependencies {
     annotationProcessor("org.projectlombok:lombok")
     annotationProcessor("org.mapstruct:mapstruct-processor:1.6.3")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("com.h2database:h2")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
