@@ -19,6 +19,20 @@ configurations {
     }
 }
 
+tasks.jar {
+    manifest {
+        attributes["Main-Class"] = "com.arch.library.LibraryCatalogueMsApplication"
+    }
+}
+
+tasks.bootJar {
+    mainClass.set("com.arch.library.LibraryCatalogueMsApplication")
+}
+
+springBoot() {
+    mainClass.set("com.arch.library.LibraryCatalogueMsApplication")
+}
+
 repositories {
     mavenCentral()
 }
